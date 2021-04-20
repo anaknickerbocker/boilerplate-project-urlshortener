@@ -12,16 +12,14 @@
 
 ## Short URL Creation
 
-example: `POST [project_url]/api/shorturl/new` - `https://www.google.com`
-
-[https://island-nail.glitch.me](https://island-nail.glitch.me)
+`POST [project_url]/api/shorturl/https://www.google.com`
 
 ## Example Usage:
 
-[https://island-nail.glitch.me/api/shorturl/74](https://island-nail.glitch.me/api/shorturl/74)
+`[project_url]/api/shorturl/74`
 
 ## Will Redirect to:
 
-https://freecodecamp.com
+https://www.google.com
 
 [freeCodeCamp](https://www.freecodecamp.com)
