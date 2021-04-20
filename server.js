@@ -1,24 +1,18 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const app = express();
+import app from './app.js'
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
-// Basic Configuration
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
+dotenv.config()
 
-app.use(cors());
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+mongoose.connection.on('error', (err) => {
+  console.error(`${err.message}`)
+})
 
-app.use('/public', express.static(`${process.cwd()}/public`));
-
-app.get('/', function(req, res) {
-  res.sendFile(process.cwd() + '/views/index.html');
-});
-
-// Your first API endpoint
-app.get('/api/hello', function(req, res) {
-  res.json({ greeting: 'hello API' });
-});
-
-app.listen(port, function() {
-  console.log(`Listening on port ${port}`);
-});
+app.listen(port, () => {
+  console.log('Server listening on port ' + port)
+})
